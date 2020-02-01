@@ -7,15 +7,15 @@ before_install:
 script:
   - docker run -e CI=true image-test npm test
 after_success:
-  - docker build -t sid/multi-client  ./client
-  - docker build -t sid/multi-nginx ./nginx
-  - docker build -t sid/multi-server ./server
-  - docker build -t sid/multi-worker ./worker
+  - docker build -t siddfurydocker/multi-client  ./client
+  - docker build -t siddfurydocker/multi-nginx ./nginx
+  - docker build -t siddfurydocker/multi-server ./server
+  - docker build -t siddfurydocker/multi-worker ./worker
 # Log into docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # take those image and push them to docker Hub
-  - docker push siddfurydocker/sid/multi-client
-  - docker push siddfurydocker/sid/multi-nginx
-  - docker push siddfurydocker/sid/multi-server
-  - docker push siddfurydocker/sid/multi-worker
+  - docker push siddfurydocker/multi-client
+  - docker push siddfurydocker/multi-nginx
+  - docker push siddfurydocker/multi-server
+  - docker push siddfurydocker/multi-worker
